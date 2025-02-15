@@ -3,12 +3,10 @@ import "./globals.css";
 import Image from "next/image";
 import React from "react";
 import { useState } from "react";
-import MenuContext from "@/components/MenuContext";
 import { useEffect } from "react";
 import {motion } from "framer-motion";
 
 export default function Page() {
-    const [isChecked, setIsChecked] = useState(false);
     const [tasks, setTasks] = useState<{ id: number; task: string; completed: boolean }[]>([]);
     const [task, setTask] = React.useState("");
 
@@ -59,115 +57,115 @@ export default function Page() {
     };
 
     return (
-        <div className="App">
-        <div className="flex flex-col items-center justify-center p-10 m-10 ">
-            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 2 }} >
-                <Image
-                src="/Blossom_Powerpuff_Girl.png"
-                alt="picture of blossom"
-                width={100}
-                height={100}
-            />
-            </motion.div>
-            
-            <motion.div initial="hidden" animate="visible" variants={{
-                hidden: {
-                    scale: .8,
-                    opacity: 0
+        <div className="">
+            <div className="flex flex-col items-center justify-center p-10 m-10 ">
+                <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 2 }} >
+                    <Image
+                    src="/Blossom_Powerpuff_Girl.png"
+                    alt="picture of blossom"
+                    width={100}
+                    height={100}
+                />
+                </motion.div>
+                
+                <motion.div initial="hidden" animate="visible" variants={{
+                    hidden: {
+                        scale: .8,
+                        opacity: 0
 
-                },
-                visible: {
-                    scale: 1,
-                    opacity: 1,
-                    transition: {
-                        delay: .2
+                    },
+                    visible: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
+                            delay: .2
+                        }
+                    },
+                }}>
+                    <div className="p-10 m-10 border-2 box-border border-pink-500 text-center bg-pink-200 rounded-md ">
+                        <h1 className="text-3xl font-bold underline">To do list app</h1>
+                    </div>
+                </motion.div>
+                
+
+                <motion.div className="p-10 m-5 border-4 box-border border-pink-500 text-center w-1/2 bg-pink-200 rounded-md" whileHover={{
+                    position: "relative",
+                    zIndex: 1,
+                    background: "pink",
+                    scale: [1, 1.2, 1.1],
+                    rotate: [0, 10, -10, 0],
+                    transition:{
+                        duration: .2
                     }
-                },
-            }}>
-                <div className="p-10 m-10 border-2 box-border border-pink-500 text-center bg-pink-200 rounded-md ">
-                    <h1 className="text-3xl font-bold underline">To do list app</h1>
-                </div>
-            </motion.div>
-            
 
-            <motion.div className="p-10 m-5 border-4 box-border border-pink-500 text-center w-1/2 bg-pink-200 rounded-md" whileHover={{
-                position: "relative",
-                zIndex: 1,
-                background: "pink",
-                scale: [1, 1.2, 1.1],
-                rotate: [0, 10, -10, 0],
-                transition:{
-                    duration: .2
-                }
+                }}>
+                    <h2 className="text-2xl font-serif mb-4 font-bold">
+                        Add a new task!
+                    </h2>
 
-            }}>
-                <h2 className="text-2xl font-serif mb-4 font-bold">
-                    Add a new task!
-                </h2>
-
-            {/* Task List */}
-                <div className="flex items-center justify-center" >
-                    <ul>
-                    {tasks.map((task) => (
-                        <>
-                        <div className="flex flex-row">
-                            <div></div>
-                            <li
-                            key={task.id}
-                            className="border-2 border-black m-2 p-2 w-64 bg-white rounded-lg text-left"
-                            >
-                            <div className="flex flex-row ">
-                                <div className="flex">
-                                <div className="pr-3">
-                                    <input
-                                    type="checkbox"
-                                    checked={task.completed}
-                                    onChange={() => onChangeCheckBox(task.id)} // checked={item.checked}
-                                    />
-                                </div>
-                                <span
-                                    className={
-                                    task.completed ? "line-through text-gray-500" : ""
-                                    }
+                {/* Task List */}
+                    <div className="flex items-center justify-center" >
+                        <ul>
+                        {tasks.map((task) => (
+                            <>
+                            <div className="flex flex-row">
+                                <div></div>
+                                <li
+                                key={task.id}
+                                className="border-2 border-black m-2 p-2 w-64 bg-white rounded-lg text-left"
                                 >
-                                    {task.task}
-                                </span>
+                                <div className="flex flex-row ">
+                                    <div className="flex">
+                                    <div className="pr-3">
+                                        <input
+                                        type="checkbox"
+                                        checked={task.completed}
+                                        onChange={() => onChangeCheckBox(task.id)} // checked={item.checked}
+                                        />
+                                    </div>
+                                    <span
+                                        className={
+                                        task.completed ? "line-through text-gray-500" : ""
+                                        }
+                                    >
+                                        {task.task}
+                                    </span>
+                                    </div>
                                 </div>
+                                </li>
+                                <button
+                                className="border-2 border-black m-2 p-2 rounded-lg bg-white hover:bg-pink-100"
+                                onClick={() => handleDeleteTask(task.id)}
+                                >
+                                Delete
+                                </button>
                             </div>
-                            </li>
-                            <button
-                            className="border-2 border-black m-2 p-2 rounded-lg bg-white hover:bg-pink-100"
-                            onClick={() => handleDeleteTask(task.id)}
-                            >
-                            Delete
-                            </button>
-                        </div>
-                        </>
-                    ))}
-                    </ul>
-                </div>
+                            </>
+                        ))}
+                        </ul>
+                    </div>
 
-                {/* Input and Button */}
-                <div className="mt-6">
-                    <input
-                    type="text"
-                    value={task}
-                    onChange={(e) => setTask(e.target.value)}
-                    className="border-2 border-black m-2 p-2 w-64 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-                    placeholder="Add a new task"
-                    />
-                    <button
-                    className="border-2 border-black m-2 p-2 rounded-lg bg-white hover:bg-green-500"
-                    onClick={handleAddTask}
-                    >
-                    Add
+                    {/* Input and Button */}
+                    <div className="mt-6">
+                        <input
+                        type="text"
+                        value={task}
+                        onChange={(e) => setTask(e.target.value)}
+                        className="border-2 border-black m-2 p-2 w-64 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                        placeholder="Add a new task"
+                        />
+                        <button
+                        className="border-2 border-black m-2 p-2 rounded-lg bg-white hover:bg-green-500"
+                        onClick={handleAddTask}
+                        >
+                        Add
+                        </button>
+                    </div>
+                    <button className="border-2 border-black m-2 p-2 rounded-lg bg-white hover:bg-red-500 hover:text-cyan-50 "  onClick={handleClearStorage}>
+                        Clear
                     </button>
-                </div>
-                <button className="border-2 border-black m-2 p-2 rounded-lg bg-white hover:bg-red-500 hover:text-cyan-50 "  onClick={handleClearStorage}>
-                    Clear
-                </button>
-            </motion.div>
-        </div>
+                </motion.div>
+            </div>
         </div>
     );
 }

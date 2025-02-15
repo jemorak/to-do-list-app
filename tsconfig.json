@@ -20,9 +20,7 @@
       }
     ],
     "paths": {
-      "@/styles/*": ["styles/*"],
-      "@/components/*": ["components/*"],
-      "@/data/*": ["data/*"]
+      "@/styles/*": ["styles/*"]
     }
   },
   "include": [
@@ -30,7 +28,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/components/Checkbox/Checkbox.js"
   ],
   "exclude": ["node_modules"]
 }
