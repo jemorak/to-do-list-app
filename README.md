@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 # 🌸 PowerPuff Blossom To-Do List App 🌸
 
 <p align="center">
@@ -19,7 +17,7 @@ A simple and efficient To-Do List app built with Next.js and TypeScript, themed 
 
 ## 🛠️ Tech Stack
 
-- Frontend: Next.js, React, TypeScript
+- Frontend: Next.js, React, TypeScript --> This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 - State Management: React Context API
 - Styling: CSS Modules / TailwindCSS (Blossom-themed color scheme)
 - Data Handling: Local storage
