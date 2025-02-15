@@ -10,13 +10,8 @@ export default function Page() {
     // State to manage the checkbox state
     const [isChecked, setIsChecked] = useState(false);
 
-    // Function to handle checkbox change
-    const onChangeCheckBox = (e: { target: { checked: boolean; value: React.SetStateAction<string>; }; }) => {
-        setIsChecked(() => e.target.checked);
-        // setIsChecked(() => !isChecked);
-    }
-   
-    const [tasks, setTasks] = useState<{ id: number, task: string }[]>([]);
+
+    const [tasks, setTasks] = useState<{ id: number, task: string, completed: boolean }[]>([]);
     const [task, setTask] = React.useState('');
 
     let nextId = 0;
@@ -27,11 +22,21 @@ export default function Page() {
         const newTask = {
             id: tasks.length + 1,
             task: task,
+            completed: false,
         };
 
         setTasks(prevTasks => [...prevTasks, newTask]); 
         setTask(''); 
     };
+
+
+    const onChangeCheckBox = (taskId: number) => {
+        setTasks(prevTasks =>
+            prevTasks.map(task =>
+                task.id === taskId ? { ...task, completed: !task.completed } : task
+            )
+        );
+    }
 
     return (
         <div>
@@ -51,16 +56,23 @@ export default function Page() {
                     
                     {/* Task List */}
                     <div className='flex items-center justify-center '>
-                        <ul className='border-2 border-black m-2 p-2 w-64 bg-white rounded-lg'>
+                        <ul className='border-2 border-black m-2 p-2 w-64 bg-white rounded-lg text-left'>
                             {tasks.map(task => (
-                                <li key={task.id}> 
-                                    <div>
-                                     <input className='p-7' type="checkbox" name="time" onChange={onChangeCheckBox} // checked={item.checked}
-                                    />{task.task}
-                                    </div>                                   
+                                <li key={task.id}>
+                                    <div className='flex'>
+                                        <div className="pr-3">
+                                        <input  type="checkbox" checked={task.completed}
+                                            onChange={()=>onChangeCheckBox(task.id)} // checked={item.checked}
+                                        />
+                                    </div>
+                                        <span className={task.completed ? 'line-through text-gray-500' : ''}>
+                                            {task.task}
+                                        </span>
+                                    </div>
+     
                                 </li>
                             ))}
-                        </ul>  
+                        </ul> 
                     </div>
                     
                     {/* Input and Button */}
