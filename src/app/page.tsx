@@ -1,11 +1,12 @@
 "use client";
 import "./globals.css";
-import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import ClearButton from "./components/ClearButton";
+import MotionImage from "./components/MotionImage";
+import MotionTitle from "./components/MotionTitle";
 
 export default function Page() {
     const [tasks, setTasks] = useState<
@@ -63,36 +64,8 @@ export default function Page() {
 
     return (
         <div className="flex flex-col items-center justify-center p-10 m-10">
-            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 2 }}>
-                <Image
-                    src="/Blossom_Powerpuff_Girl.png"
-                    alt="picture of blossom"
-                    width={100}
-                    height={100}
-                />
-            </motion.div>
-
-            <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={{
-                hidden: {
-                    scale: 0.8,
-                    opacity: 0,
-                },
-                visible: {
-                    scale: 1,
-                    opacity: 1,
-                    transition: {
-                    delay: 0.2,
-                    },
-                },
-                }}>
-                <div className="p-10 m-10 border-2 box-border border-pink-500 text-center bg-pink-200 rounded-md">
-                <h1 className="text-3xl font-bold underline">To do list app</h1>
-                </div>
-            </motion.div>
-
+            <MotionImage/>
+            <MotionTitle/>
             <motion.div
                 className="p-10 m-5 border-4 box-border border-pink-500 text-center w-1/2 bg-pink-200 rounded-md"
                 whileHover={{
