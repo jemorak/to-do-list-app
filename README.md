@@ -1,8 +1,9 @@
 # 🌸 PowerPuff Blossom To-Do List App 🌸
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/705c074b-bcaa-4496-b434-9b81285594b1" width='700'>
+  <img src="https://github.com/user-attachments/assets/705c074b-bcaa-4496-b434-9b81285594b1" width='600'>
 </p>
+
 ## 📌 Overview
 
 A simple and efficient To-Do List app built with Next.js and TypeScript, themed after Blossom from The Powerpuff Girls (never watched it lol)! This application helps users manage tasks by adding, and deleting them with a clean UI, featuring a pink and stylish aesthetic inspired by Blossom. I need to implement edit feature at some point!
