@@ -1,13 +1,13 @@
 import React from "react";
 
-interface TaskFormProps {
+type TaskFormProps = {
   task: string;
   setTask: React.Dispatch<React.SetStateAction<string>>;
   onAddTask: () => void;
 }
 
-const TaskForm: React.FC<TaskFormProps> = ({ task, setTask, onAddTask }) => {
-  return (
+function TaskForm({task, setTask, onAddTask}: TaskFormProps){
+    return (
     <div className="mt-6">
       <input
         type="text"

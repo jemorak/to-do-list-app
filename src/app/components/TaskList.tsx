@@ -1,18 +1,14 @@
 import React from "react";
 import TaskItem from "./TaskItem";
 
-interface TaskListProps {
+type TaskListProps = {
   tasks: { id: number; task: string; completed: boolean }[];
   onChangeCheckBox: (taskId: number) => void;
   onDeleteTask: (taskId: number) => void;
 }
 
-const TaskList: React.FC<TaskListProps> = ({
-  tasks,
-  onChangeCheckBox,
-  onDeleteTask,
-}) => {
-  return (
+function TaskList({tasks, onChangeCheckBox, onDeleteTask}: TaskListProps) {
+     return (
     <div className="flex items-center justify-center">
       <ul>
         {tasks.map((task) => (
