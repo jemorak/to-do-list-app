@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "src/app",
+    "baseUrl": "src",
     "plugins": [
       {
         "name": "next"
@@ -21,9 +21,16 @@
     ],
     "paths": {
       "@/styles/*": ["styles/*"],
-      "@/components/*": ["components/*"]
+      "@/components/*": ["components/*"],
+      "@/data/*": ["data/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/Checkbox/Checkbox.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/components/Checkbox/Checkbox.js"
+  ],
   "exclude": ["node_modules"]
 }
