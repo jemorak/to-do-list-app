@@ -62,9 +62,14 @@ export default function Page() {
 
           {/* Task List */}
           <div className="flex items-center justify-center ">
-                <ul className="border-2 border-black m-2 p-2 w-64 bg-white rounded-lg text-left">
+                <ul>
                 {tasks.map((task) => (
-                    <li key={task.id}>
+                    <>
+                    <div className="flex flex-row">
+                        <div>
+                            
+                        </div>
+                    <li key={task.id} className="border-2 border-black m-2 p-2 w-64 bg-white rounded-lg text-left">
                         <div className="flex flex-row ">
                             <div className="flex">
                                 <div className="pr-3">
@@ -75,21 +80,24 @@ export default function Page() {
                                     />
                                 </div>
                                 <span
-                                    className={
-                                    task.completed ? "line-through text-gray-500" : ""
-                                    }
+                                    className={task.completed ? "line-through text-gray-500" : ""}
                                 >
                                     {task.task}
                                 </span>
                             </div>
                         </div>
-                        <button
-                            className="border-2 border-black m-2 p-2 rounded-lg bg-white hover:bg-pink-100"
-                            onClick={() => handleDeleteTask(task.id)}
-                        >
+                    </li>
+                    <button
+                        className="border-2 border-black m-2 p-2 rounded-lg bg-white hover:bg-pink-100"
+                        onClick={() => handleDeleteTask(task.id)}
+                    >
                             Delete
                         </button>
-                    </li>
+
+                    </div>
+                    </>
+                    
+           
                     ))}
                 </ul>
           </div>
