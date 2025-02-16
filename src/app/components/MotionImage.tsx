@@ -5,11 +5,11 @@ import Image from "next/image";
 function MotionImage(){
     return(
         <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 2 }}>
-            <Image
+            <Image className="p-2"
                 src="/Blossom_Powerpuff_Girl.png"
                 alt="picture of blossom"
-                width={100}
-                height={100}
+                width={70}
+                height={70}
             />
         </motion.div>
     )

@@ -1,12 +1,16 @@
 import React from "react";
+import ClearButton from "./ClearButton";
 
 type TaskFormProps = {
   task: string;
   setTask: React.Dispatch<React.SetStateAction<string>>;
   onAddTask: () => void;
+  onClearStorage: () => void;
 }
 
-function TaskForm({task, setTask, onAddTask}: TaskFormProps){
+
+
+function TaskForm({task, setTask, onAddTask, onClearStorage}: TaskFormProps){
     return (
     <div className="mt-6">
       <input
@@ -17,11 +21,13 @@ function TaskForm({task, setTask, onAddTask}: TaskFormProps){
         placeholder="Add a new task"
       />
       <button
-        className="border-2 border-black m-2 p-2 rounded-lg bg-white hover:bg-green-500"
+        className="w-1/4 border-2 border-black m-2 p-2 rounded-lg bg-white hover:bg-green-500"
         onClick={onAddTask}
       >
         Add
       </button>
+      <ClearButton onClearStorage={onClearStorage} />
+
     </div>
   );
 };

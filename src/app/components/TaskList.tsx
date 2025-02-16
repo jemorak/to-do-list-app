@@ -10,7 +10,7 @@ type TaskListProps = {
 function TaskList({tasks, onChangeCheckBox, onDeleteTask}: TaskListProps) {
      return (
     <div className="flex items-center justify-center">
-      <ul>
+      <ul className="w-64 sm:w-72">
         {tasks.map((task) => (
           <TaskItem
             key={task.id}

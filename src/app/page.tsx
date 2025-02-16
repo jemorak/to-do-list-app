@@ -63,22 +63,13 @@ export default function Page() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center p-10 m-10">
-            <MotionImage/>
-            <MotionTitle/>
-            <motion.div
-                className="p-10 m-5 border-4 box-border border-pink-500 text-center w-1/2 bg-pink-200 rounded-md"
-                whileHover={{
-                position: "relative",
-                zIndex: 1,
-                background: "pink",
-                scale: [1, 1.2, 1.1],
-                rotate: [0, 10, -10, 0],
-                transition: {
-                    duration: 0.2,
-                },
-                }}
-                >
+        <div className="flex flex-col items-center justify-center p-10 ">
+            <div className="flex flex-col items-center sm:flex-row ">
+                <MotionImage/>
+                <MotionTitle/>
+            </div>
+            
+            <div className="p-2 m-5 border-4 box-border border-pink-500 text-center w-72 bg-pink-200 rounded-md sm:w-96">
                 <h2 className="text-2xl font-serif mb-4 font-bold">Add a new task!</h2>
                 <TaskList 
                     tasks={tasks}
@@ -88,10 +79,10 @@ export default function Page() {
                 <TaskForm 
                     task={task} 
                     setTask={setTask} 
-                    onAddTask={handleAddTask} 
+                    onAddTask={handleAddTask}
+                    onClearStorage={handleClearStorage} 
                 />
-                <ClearButton onClearStorage={handleClearStorage} />
-            </motion.div>
+            </div>
         </div>
   );
 }
