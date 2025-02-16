@@ -55,6 +55,14 @@ export default function Page() {
         setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
     };
 
+    const handleEditTask = (taskId: number, newTask: string ) => {
+        setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+        task.id === taskId ? { ...task, task: newTask } : task
+        ));
+
+    }
+
     const onChangeCheckBox = (taskId: number) => {
         setTasks((prevTasks) =>
         prevTasks.map((task) =>
@@ -75,6 +83,7 @@ export default function Page() {
                     tasks={tasks}
                     onChangeCheckBox={onChangeCheckBox}
                     onDeleteTask={handleDeleteTask}
+                    onUpdateTask={handleEditTask}
                 />
                 <TaskForm 
                     task={task} 
